@@ -1,0 +1,61 @@
+if (message.indexOf("connection") > -1) {
+    temp = message.substring(message.indexOf("connection") + 11);
+    temp = temp.substring(0, temp.indexOf(";"));
+    Serial.println("Connection=" + temp);
+    if (temp == "wifi") connection = getModeWifi();
+    else if (temp == "sd") connection = getModeSD();
+  }
+
+  Serial.println("LINE 193");
+
+  if (connection_WIFI()) {
+    if (message.indexOf("ssid") > -1) {
+      ssid = message.substring(message.indexOf("ssid") + 5);
+      ssid = ssid.substring(0, ssid.indexOf(";"));
+      Serial.println("SSID=" + ssid);
+    }
+    if (message.indexOf("password") > -1) {
+      password = message.substring(message.indexOf("password") + 9);
+      password = password.substring(0, password.indexOf(";"));
+      Serial.println("Password=" + password);
+    }
+  }
+
+  Serial.println("LINE 211");
+  if (message.indexOf("host") > -1) {
+    host = message.substring(message.indexOf("host") + 5);
+    host = host.substring(0, host.indexOf(";"));
+    Serial.println("Host=" + host);
+  }
+  if (message.indexOf("hostlocal") > -1) {
+    hostlocal = message.substring(message.indexOf("hostlocal") + 10);
+    hostlocal = hostlocal.substring(0, hostlocal.indexOf(";"));
+    Serial.println("Local Host=" + hostlocal);
+  }
+  if (message.indexOf("interval") > -1) {
+    temp = message.substring(message.indexOf("interval") + 9);
+    temp = temp.substring(0, temp.indexOf(";"));
+    interval = temp.toInt();
+    Serial.println("Interval=" + String(interval) + "s");
+  }
+
+  Serial.println("LINE 232");
+  if (message.indexOf("hwid") > -1) {
+    id = message.substring(message.indexOf("hwid") + 5);
+    id = id.substring(0, id.indexOf(";"));
+    Serial.println("Hardware ID=" + id);
+  }
+  if (message.indexOf("description") > -1) {
+    description = message.substring(message.indexOf("description") + 12);
+    description = description.substring(0, description.indexOf(";"));
+    Serial.println("Description=" + description);
+  }
+  if (message.indexOf("model") > -1) {
+    temp = message.substring(message.indexOf("model") + 6);
+    temp = temp.substring(0, temp.indexOf(";"));
+    Serial.println("Model=" + temp);
+    
+    if (temp == "myces") model = MODEL_MYCES;
+    else if (temp == "sdm630") model = MODEL_SDM630;
+    else if (temp == "dpm380") model = MODEL_DPM380;
+  }

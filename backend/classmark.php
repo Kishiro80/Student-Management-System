@@ -1,0 +1,2 @@
+<?php include_once 'AllowCORS.php';
+echo '{"msg":"Success","data":{"values1":[5,6,7,8,9,10,9,8,6,5],"values2":[10,9,8,7,6,5,4,2,3,1],"values3":[10,9,8,7,6,5,6,7,8,9],"label":[10,20,30,40,50,60,70,80,90,100]}}';?>
